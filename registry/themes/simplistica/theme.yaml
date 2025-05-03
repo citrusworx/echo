@@ -1,0 +1,64 @@
+theme: Simplistica
+description: A simple and clean theme for your Echo app.
+author: Your Name
+version: 1.0.0
+license: MIT
+pluginUrl: yoursite.com/plugin
+
+##--- Styling--- ##
+
+colors:
+  # OPTION 1
+  config: 'to/css/colors.css'
+
+  # OPTION 2
+  # primary: "#3498db" # Primary color for buttons and links
+  # secondary: "#2ecc71" # Secondary color for accents
+  # background: "#f4f4f4" # Background color for the app
+  # text: "#333333" # Text color for readability
+
+fonts:
+  # OPTION 1
+  config: './css/fonts.css'
+
+  # OPTION 2
+  # body: "Arial, sans-serif" # Font for body text
+  # heading: "Georgia, serif" # Font for headings
+  # size: "16px" # Base font size for the app
+  # lineHeight: "1.5" # Line height for readability
+
+  components:
+    # OPTION 1
+    config: './comp/components.tsx'
+
+    # OPTION 2
+    # header:
+    #   entry: 'to/comp/header.tsx'
+    #   style: 'to/css/header.css'
+    # footer:
+    #   entry: 'to/comp/footer.tsx'
+    #   style: 'to/css/footer.css'
+  
+  widgets:
+    # OPTION 1
+    config: './widgets/widgets.tsx'
+
+    # OPTION 2
+    # sidebar:
+    #   login:
+    #     entry: 'to/comp/login.tsx'
+    #     style: 'to/css/login.css'
+  
+  page_templates:
+    # OPTION 1
+    config: './pages/pages.tsx'
+
+    # OPTION 2
+    # home:
+    #   entry: 'to/comp/home.tsx'
+    #   style: 'to/css/home.css'
+    # about:
+    #   entry: 'to/comp/about.tsx'
+    #   style: 'to/css/about.css'
+  
+  
