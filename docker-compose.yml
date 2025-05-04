@@ -1,0 +1,207 @@
+networks:
+  echonet:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  verdaccio_data:
+  minio_data:
+  letsencrypt:
+  ui:
+  api:
+  admin:
+  billing:
+  docs:
+  echo_ui_node_modules:
+  echo_admin_node_modules:
+
+services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - "api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=admin@echo.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik:/letsencrypt
+
+    networks:
+      - echonet
+
+  verdaccio: # Internal Registry
+    image: verdaccio/verdaccio:latest
+    container_name: verdaccio
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "4873:4873"
+    volumes:
+      - verdaccio_data:/verdaccio/storage
+      - ./verdaccio/conf:/verdaccio/conf
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.registry.rule=Host('registry.echo.local')"
+      - "traefik.http.routers.registry.entrypoints=web, websecure"
+      - "traefik.http.routers.registry.tls.certresolver=myresolver"
+
+  echo_minio: # Internal Object FS (S3 compatible)
+    image: minio/minio
+    container_name: echo_minio
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio_data:/data
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: supersecure
+    command: server /data --console-address ":9001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.minio.rule=Host(`minio.echo.local`)"
+      - "traefik.http.routers.minio.entrypoints=web,websecure"
+      - "traefik.http.routers.minio.tls.certresolver=myresolver"
+
+  echodb: # Database
+    image: postgres:16
+    container_name: echodb
+    restart: unless-stopped
+    networks:
+      - echonet
+    environment:
+      POSTGRES_USER: echouser
+      POSTGRES_PASSWORD: 3ch0n3t0933!
+      POSTGRES_DB: echodb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  echo_ui: # Front End
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: echo_ui
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "3001:3000"
+    working_dir: /echo
+    volumes:
+      - ./ui:/echo:cached
+      - echo_ui_node_modules:/echo/node_modules
+    command:
+      [
+        "/bin/sh",
+        "-c",
+        "if [ ! -f yarn.lock ]; then yarn install; fi && yarn dev",
+      ]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ui.rule=Host(`www.echo.local`)"
+      - "traefik.http.routers.ui.entrypoints=web,websecure"
+      - "traefik.http.routers.ui.tls.certresolver=myresolver"
+
+  echo_api: # Back End
+    build:
+      context: .
+      dockerfile: Dockerfile.dev-base
+    container_name: echo_api
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "3002:3001"
+    working_dir: /api
+    volumes:
+      - ./api:/api
+    command:
+      [
+        "/bin/sh",
+        "-c",
+        "cd /api && if [ ! -f yarn.lock ]; then yarn install; fi && yarn dev",
+      ]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`api.echo.local`)"
+      - "traefik.http.routers.api.entrypoints=web,websecure"
+      - "traefik.http.routers.api.tls.certresolver=myresolver"
+
+  echo_redis: # Caching
+    image: redis:7-alpine
+    container_name: echo_redis
+    restart: unless-stopped
+    networks:
+      - echonet
+
+  echo_admin: # Management Service
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: echo_admin
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "3003:3002"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.admin.rule=Host(`admin.echo.local`)"
+      - "traefik.http.routers.admin.entrypoints=web,websecure"
+      - "traefik.http.routers.admin.tls.certresolver=myresolver"
+    working_dir: /admin
+    volumes:
+      - ./admin:/admin
+      - echo_admin_node_modules:/admin/node_modules
+    command:
+      [
+        "/bin/sh",
+        "-c",
+        "if [ ! -f yarn.lock ]; then yarn install; fi && yarn dev",
+      ]
+
+  echo_billing: # Billing & Invoicing
+    build:
+      context: ./billing
+      dockerfile: Dockerfile
+    container_name: echo_billing
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "3004:3003"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.billing.rule=Host(`billing.echo.local`)"
+      - "traefik.http.routers.billing.entrypoints=web,websecure"
+      - "traefik.http.routers.billing.tls.certresolver=myresolver"
+
+  echo_docs: # Documentationa & Tutorial Site
+    image: node:20-alpine
+    container_name: echo_docs
+    restart: unless-stopped
+    networks:
+      - echonet
+    ports:
+      - "3005:3004"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.docs.rule=Host(`docs.echo.local`)"
+      - "traefik.http.routers.docs.entrypoints=web,websecure"
+      - "traefik.http.routers.docs.tls.certresolver=myresolver"

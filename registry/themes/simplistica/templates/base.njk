@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% block title %} 
+            Kiwi App
+        {% endblock %}
+    </title>
+    {# Global Styles #}
+    {# insert any global stylesheets (Bootstrap or Tailwind) here #}
+    {# Uncomment the line below and enter the src URL #}
+    {# <link rel="stylesheet" href="" /> #}
+    {% block styles %}{% endblock %}
+    </head>
+
+<body data-page="{{ page or '' }}">
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    {# Include footer here #}
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+{# Modals, pop-ups, after event content #}
+{% block misc_layout %}
+{% endblock %}
+{# Script injection #}
+{% block scripts%}
+{% endblock %}
+</body>
+</html> 

@@ -1,0 +1,11 @@
+{
+  "name": "registry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "minio": "^8.0.5",
+    "nunjucks": "^3.2.4",
+    "verdaccio": "^6.1.2"
+  }
+}

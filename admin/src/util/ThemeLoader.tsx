@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import YAML from 'yaml';
+import { load as parseYAML } from 'js-yaml';
 import axios from 'axios';
 
 interface ThemeConfig {
@@ -40,7 +40,7 @@ export default function ThemeLoader(themeName: string) {
         async function loadTheme (themeName: string) {
             try {
                 const response = await axios.get(`/themes/${themeName}/theme.yaml`);
-                const themeConfig: ThemeConfig = YAML.parse(response.data);
+                const themeConfig: ThemeConfig = parseYAML(response.data) as ThemeConfig;
 
                 console.log("Theme loaded:", themeConfig.theme)
                 setThemeConfig(themeConfig);

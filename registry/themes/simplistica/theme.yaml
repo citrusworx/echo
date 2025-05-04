@@ -49,9 +49,9 @@ fonts:
     #     entry: 'to/comp/login.tsx'
     #     style: 'to/css/login.css'
   
-  page_templates:
+  templates:
     # OPTION 1
-    config: './pages/pages.tsx'
+    location: './templates'
 
     # OPTION 2
     # home:
