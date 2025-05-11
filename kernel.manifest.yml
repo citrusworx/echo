@@ -1,0 +1,32 @@
+kernel:
+  name: kiwi-engine
+  iteration: keylime
+  version: 0.1.0
+  runtimes:
+    - kiwipress
+    - kiwify
+    - strumsales
+  modules:
+    - nectarine
+    - juice
+    - grapevine
+  citrusos:
+    enabled: true
+    default_runtime: kiwipress
+    panel_mount: ./citrusos/index.html
+
+runtimes:
+  kiwipress:
+    path: ''
+    label: "Headless WP & CMS"
+    auto_start: false
+
+  kiwify:
+    path: ''
+    label: "Headless Shopify & eCommerce Solution"
+    auto_start: false
+
+  strumsales:
+    path: ''
+    label: "PoS & Inventory System"
+    auto_start: false

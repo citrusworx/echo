@@ -1,0 +1,11 @@
+{
+    "yaml.schemas": {
+        "file:///e:/Citrusworx/echo/pulse/pulse-handler-schema.json": [
+            "pulse/handlers/*.yaml"
+        ],
+        "file:///c%3A/Users/FUCK/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": [
+            "/toc\\.yml/i"
+        ],
+        "file:///e%3A/Citrusworx/echo/pulse/pulse-handler-schema.json": "file:///e%3A/Citrusworx/echo/pulse/handlers/postToDiscord.yaml"
+    }
+}

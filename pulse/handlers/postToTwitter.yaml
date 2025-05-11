@@ -1,0 +1,12 @@
+postToTwitter:
+  description: Post a tweet to an account(s) when a trigger is met
+  author: KeyLime Software
+  trigger: post_published
+  lambda: postToTwitter
+  input:
+      message: "{{meta.twitterText}}"
+  secrets:
+    - TWITTER_API_KEY
+    - TWITTER_API_SECRET
+    - TWITTER_ACCESS_TOKEN
+    - TWITTER_ACCESS_SECRET

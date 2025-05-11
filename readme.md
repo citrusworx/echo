@@ -1,118 +1,106 @@
-# 📘 Kiwi Engine Dev Environment
+# 🍋 Kiwi Engine
 
-Welcome to the **Kiwi Engine** development stack — a modular, containerized platform built for modern, scalable app architecture. This setup includes services for front-end rendering, API logic, theme/plugin registries, admin tools, and more.
+**The open-source engine for creators, developers, and indie businesses.**
 
----
+Kiwi Engine is a full-stack, open-source platform that powers everything from content websites and eCommerce portals to full SaaS apps and admin dashboards — all with your choice of hosting, frontends, and infrastructure.
 
-## 🧱 Architecture Overview
-
-| Service        | Role                                         | URL (via Traefik)                                        |
-| -------------- | -------------------------------------------- | -------------------------------------------------------- |
-| `traefik`      | Reverse proxy + SSL routing                  | [http://localhost](http://localhost), HTTPS              |
-| `verdaccio`    | Private npm/yarn package registry            | [http://registry.echo.local](http://registry.echo.local) |
-| `echo_minio`   | Object storage for themes/plugins (S3-style) | [http://minio.echo.local](http://minio.echo.local)       |
-| `echodb`       | PostgreSQL database                          | Internal only                                            |
-| `echo_redis`   | Redis cache                                  | Internal only                                            |
-| `echo_ui`      | SSR Frontend renderer (Nunjucks, Express)    | [http://www.echo.local](http://www.echo.local)           |
-| `echo_api`     | API backend (Nectarine, GraphQL/REST)        | [http://api.echo.local](http://api.echo.local)           |
-| `echo_admin`   | Admin panel GUI (WordPress-style)            | [http://admin.echo.local](http://admin.echo.local)       |
-| `echo_billing` | Billing microservice                         | [http://billing.echo.local](http://billing.echo.local)   |
-| `echo_docs`    | Developer documentation interface            | [http://docs.echo.local](http://docs.echo.local)         |
+No matter who you are — a musician, educator, indie dev, or entrepreneur — **Kiwi Engine gives you the tools to build apps, launch sites, and grow your audience** using a single modular ecosystem.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Why Kiwi Engine?
 
-### 1. Clone the Repo
+### 🧱 Modular Architecture
+
+* Use only what you need: CMS, eCommerce, CRM, API Builder, UI Kit, and more.
+* Every part of the stack is optional, composable, and extensible.
+
+### 🌐 Bring Your Own Stack
+
+* Frontend? Use Vanilla, React, Svelte, or your favorite framework.
+* Hosting? Use your provider of choice — from local to AWS, GCP, or Hetzner.
+* Database? Swap between PostgreSQL, MongoDB, or whatever your app needs.
+
+### 🧠 Smart, Declarative Backend (Nectarine)
+
+* Define APIs and database schemas using clean, readable YAML.
+* Skip the boilerplate, keep the control.
+
+### 💻 Visual UI Builder (Sugar)
+
+* Drag-and-drop app builder with Node-based logic editor.
+* Build powerful apps without writing code — or drop in code when you want to.
+
+### 🧰 Developer CLI (KiwiCLI)
+
+* One command to scaffold, deploy, inspect, or export your app.
+* Perfect for rapid prototyping and production rollouts.
+
+### ⚙️ Infrastructure-as-Code Built In (GrapeVine)
+
+* Shell scripts, Dockerfiles, CloudFormation templates — all version-controlled.
+* Includes cost breakdowns, setup guides, and one-click deploy options.
+
+### 📦 Real Apps, Built With Kiwi
+
+* From StrumSales (PoS system) to citrusOS (admin dashboard) to Sugar itself — every Kiwi-made app is a proof-of-concept and tutorial.
+
+---
+
+## 🔓 Open Source & Community-Driven
+
+Kiwi Engine is proudly open source and always will be.
+
+* **MIT License** — free to use, fork, and build on
+* Built to be transparent, auditable, and community-expandable
+* Submit your own modules, themes, or infrastructure templates
+
+---
+
+## 📚 Learn & Build
+
+We’re not just building tools — we’re teaching you how to use them.
+
+* Full documentation for every module and CLI command
+* Step-by-step tutorials for hosting, app building, and deployments
+* Community forums and Discord for support, feedback, and showcase
+
+---
+
+## 💡 Perfect For:
+
+* Indie Developers
+* Creators & Streamers
+* Musicians & Teachers
+* Small Agencies
+* Student Engineers
+* SaaS Startups
+
+---
+
+## 🛠 Get Started
 
 ```bash
-git clone https://github.com/citrusworx/echo.git
-cd echo
+npx kiwi-cli init my-app
+cd my-app
+kiwi dev
 ```
 
-### 2. Start Everything
-
-```bash
-docker-compose up --build -d
-```
-
-### 3. View Services
-
-* Main Site: [http://www.echo.local](http://www.echo.local)
-* Admin: [http://admin.echo.local](http://admin.echo.local)
-* API: [http://api.echo.local](http://api.echo.local)
-* Registry: [http://registry.echo.local](http://registry.echo.local)
-* Object Storage: [http://minio.echo.local](http://minio.echo.local)
-* Docs: [http://docs.echo.local](http://docs.echo.local)
-
-> SSL is auto-managed by Traefik via Let’s Encrypt.
+Or [read the full guide →](https://your-site.dev/docs/getting-started)
 
 ---
 
-## 🔁 Common Dev Commands
+## 🌱 Join the Ecosystem
 
-Create a `Makefile` for these:
+Ready to grow something powerful? Join the Kiwi community and start building with confidence, ownership, and zero limits.
 
-```makefile
-up:
-docker-compose up --build -d
-
-down:
-docker-compose down
-
-rebuild:
-docker-compose build --no-cache
-
-logs:
-docker-compose logs -f
-
-restart:
-docker-compose restart
-
-ps:
-docker-compose ps
-```
-
-Then you can use:
-
-```bash
-make up       # Start stack
-make rebuild  # Rebuild all
-make logs     # Tail logs
-```
+**Website:** [https://kiwiengine.dev](https://kiwiengine.dev)
+**Docs:** [https://docs.kiwiengine.dev](https://docs.kiwiengine.dev)
+**Discord:** [Join the Community](https://discord.gg/your-invite)
+**Twitter/X:** [@kiwiengine](https://twitter.com/kiwiengine)
 
 ---
 
-## 📦 Registry & Themes
-
-* **Verdaccio** serves plugins/extensions via `yarn add @kiwipress/plugin-seo`
-* **MinIO** stores downloadable `.zip` files for themes, widgets, and blocks
-* Theme manifests live in `theme.yaml` and are parsed at runtime
-
----
-
-## 🔐 Credentials
-
-| Service  | Username | Password     |
-| -------- | -------- | ------------ |
-| MinIO    | admin    | supersecure  |
-| Postgres | echouser | 3ch0n3t0933! |
-
-> Replace these with `.env`-driven secrets in production.
-
----
-
-## 📌 Notes
-
-* All services share a `echonet` Docker bridge network.
-* You can use hostnames like `echo_api:3001` or `echo_minio:9000` internally.
-* Volumes persist data between restarts.
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Add features or services
-3. PR to main branch
-4. Include `docker-compose.override.yml` if adding custom services
+**🍋 Kiwi Engine — Build Anything. Host Anywhere. Grow Forever.**
+Open Source. Fully Yours.
+Kiwi Engine is 100% open source — everything from the core engine to the deployment tools is available for you to inspect, extend, and deploy on your terms. With GrapeVine, our Infrastructure-as-Code library, you can run your apps anywhere — cloud, local, or hybrid — using transparent, community-driven templates. Whether you're an indie dev, an educator, or building for production, Kiwi gives you complete control over your infrastructure without locking you in.

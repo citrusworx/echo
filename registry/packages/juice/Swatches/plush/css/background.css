@@ -1,0 +1,34 @@
+.bg-color--plush-orange,
+.bg-color.plush-orange,
+.bgc-plush-orange
+{
+    background-color: var(--plush-orange);
+}
+
+.bg-color--plush-tan,
+.bg-color.plush-tan,
+.bgc-plush-tan
+{
+    background-color: var(--plush-tan);
+}
+
+.bg-color--plush-cream,
+.bg-color.plush-cream,
+.bgc-plush-cream
+{
+    background-color: var(--plush-cream);
+}
+
+.bg-color--plush-black,
+.bg-color.plush-black,
+.bgc-plush-black
+{
+    background-color: var(--plush-black);
+}
+
+.bg-color--plush-brown,
+.bg-color.plush-brown,
+.bgc-plush-brown
+{
+    background-color: var(--plush-brown);
+}

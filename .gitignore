@@ -2,3 +2,10 @@ ui/node_modules
 admin/node_modules
 api/node_modules
 node_modules
+registry/packages/modules/kiwipress/node_modules
+registry/packages/modules/kiwify/node_modules
+registry/packages/packages/grapevine/node_modules
+registry/packages/packages/nectarine/node_modules
+registry/packages/packages/nectarine/.git
+registry/packages/packages/juice/node_modules
+registry/packages/packages/juice/.git

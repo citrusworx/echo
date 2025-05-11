@@ -1,0 +1,16 @@
+# Use official lightweight Node Alpine image
+FROM node:23-slim-alpine
+
+# Install Yarn globally via Alpine's apk package manager
+RUN apk add --no-cache yarn
+
+# Set a default working directory for all Echo services
+WORKDIR /echo
+
+## Wget the UI package.json from GitHub repo
+RUN wget https://raw.githubusercontent.com/echo-io/echo/main/ui/package.json -O package.json
+
+# Install the UI dependencies
+RUN yarn install --frozen-lockfile --non-interactive --prefer-offline
+RUN yarn cache clean
+

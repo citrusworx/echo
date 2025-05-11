@@ -1,0 +1,29 @@
+name: 'Grapevine'
+version: 1.0.0
+
+dependencies:
+  - name: 'core'
+    version: 1.0.0
+  - name: 'services'
+    version: 1.0.0
+  - name: 'citrusCLI'
+    version: 1.0.0
+
+engine: 'SQL' # SQL | NoSQL | Hybrid | API
+type: 'REST' # REST | SOAP | GraphQL | gRPC
+language: 'C#' # C# | Js | VB | Java | Python | Node | Ruby | PHP | Go | Rust
+iac: true
+iacType: 'bash' # bash | terraform | pulumi | cloudformation | CDK
+orchestration: 'docker' # docker | kubernetes | helm | cloudformation | CDK
+
+# Cloud Config
+provider: 'AWS' # AWS | Azure | GCP | Docker | Linode | DigitalOcean | Packet | Scaleway | VMware
+accessKey: '<YOUR_AwsAccessKey_HERE>'
+providerConfig: 'path/to/config.yml' # Path to specific provider config file
+region: 'Virginia'
+availabilityZone: 'us-east-1a'
+instanceType: 't2.micro'
+instanceImage: 'ami-0c2b8ca1dad447f8a'
+instanceCount: 1
+instanceVolumeSize: 30
+instanceVolumeType: 'gp2'

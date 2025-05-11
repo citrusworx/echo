@@ -1,0 +1,10 @@
+postToDiscord:
+  description: Post to a Discord channel when a trigger is met
+  author: KeyLime Software
+  trigger: stream_start
+  lambda: postToDiscord
+  input:
+    message: "{{meta.discordMessage}}"
+  secrets:
+    - DISCORD_API_KEY
+    - DISCORD_API_SECRET

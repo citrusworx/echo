@@ -1,0 +1,14 @@
+:root {
+    /* Default Plush Template */
+    --plush-orange: #E4572E;
+    --plush-cream: #F3E9DC;
+    --plush-black: #111111;
+    --plush-tan: #C7A27C;
+    --plush-brown: #38220F;
+
+    /* Typography Specific Stylings */
+    --plush-heading: 3rem;
+    --plush-text: 1rem;
+    --plush-subheading: 2rem;
+    --plush-small: 0.8rem;
+}

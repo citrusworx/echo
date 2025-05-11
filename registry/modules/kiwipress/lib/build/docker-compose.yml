@@ -1,0 +1,82 @@
+networks:
+  kiwinet:
+    driver: bridge
+
+    ## KiwiPress Needs a
+    #  - Database
+    # -  Front End Server
+    # -  Back End Server (API-only WordPress)
+    # -  Admin Server (Gui-based) <-- Becomes new Wordpress Admin with Kiwi features
+    ################
+
+volumes:
+  wpdb_data:
+  wordpress_data:
+  kiwiadmin_data:
+  kiwi_front_data:
+
+services:
+  wpdb:
+    image: mariadb:latest
+    container_name: wpdb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: wpdb
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppassword
+
+    volumes:
+      - wpdb_data:/var/lib/mysql
+    networks:
+      - kiwinet
+
+  kiwi_api:
+    image: wordpress:php8.2-apache
+    container_name: kiwiapi
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: wpdb:3306
+      WORDPRESS_DB_NAME: wpdb
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppassword
+    ports:
+      - "6009:80"
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - wpdb
+    networks:
+      - kiwinet
+
+  kiwi_admin:
+    build:
+      context: ./admin
+    dockerfile: ../docker/back/Dockerfile
+    container_name: kiwipress_admin
+    working_dir: /app
+    ports:
+      - "4000:4000"
+    volumes:
+      - kiwiadmin_data:/app
+    networks:
+      - kiwinet
+    restart: unless-stopped
+    depends_on:
+      - kiwiapi
+
+  kiwi_front:
+    build:
+      context: ./frontend
+    dockerfile: ../docker/front/Dockerfile
+    container_name: kiwi_front
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - kiwi_front_data:/app
+    networks:
+      - kiwinet
+    restart: unless-stopped
+    depends_on:
+      - kiwiapi
