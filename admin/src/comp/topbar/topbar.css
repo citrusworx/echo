@@ -1,0 +1,11 @@
+[data-top-dock="default"], .dock {
+    width: 100vw;
+    min-height: 5vh;
+    background-color: black;
+}
+
+#settings {
+    width: 5vw;
+    height: 100%;
+    background-color: white;
+}

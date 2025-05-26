@@ -1,10 +1,10 @@
-## 🧪 KiwiCLI Overview
+# 🧪 KiwiCLI Overview
 
 There are many things you can accomplish with the CLI. It is the **preferred method** of starting any project in the Kiwi ecosystem.
 
 ---
 
-### 🚀 `kiwi start --service {module}`
+## 🚀 `kiwi start --service {module}`
 
 Starts a specific Kiwi module as a background service.
 
@@ -13,15 +13,14 @@ kiwi start --service kiwipress
 ```
 
 - Boots up the specified module (e.g., kiwipress, kiwishop).
-    
+
 - Logs are written to `.kiwi/logs/{module}.log`.
-    
+
 - Service runs in a managed child process.
-    
 
 ---
 
-### 🛑 `kiwi stop --service {module}`
+## 🛑 `kiwi stop --service {module}`
 
 Stops a running Kiwi module.
 
@@ -30,13 +29,12 @@ kiwi stop --service kiwipress
 ```
 
 - Sends a graceful shutdown signal.
-    
+
 - Logs the stop event in the same `.kiwi/logs` folder.
-    
 
 ---
 
-### 📡 `kiwi status`
+## 📡 `kiwi status`
 
 Displays the status of all managed Kiwi modules.
 
@@ -45,9 +43,8 @@ kiwi status
 ```
 
 - Shows running/stopped state
-    
+
 - Shows port, PID, uptime, etc.
-    
 
 ---
 
@@ -60,9 +57,8 @@ kiwi logs
 ```
 
 - Defaults to real-time view (`tail -f` style)
-    
+
 - Add `--service` to filter:
-    
 
 ```bash
 kiwi logs --service kiwipress
@@ -79,7 +75,6 @@ kiwi init
 ```
 
 - Interactive mode: pick stack, flavor, and modules
-    
 
 ---
 
@@ -92,9 +87,8 @@ kiwi init --gui
 ```
 
 - Requires Sugar to be installed
-    
+
 - Opens the GUI for visual project generation
-    
 
 ---
 
@@ -107,11 +101,10 @@ kiwi deploy --aws config/prod.yaml
 ```
 
 - Uses GrapeVine to provision infrastructure
-    
+
 - Deploys the build artifact or container
-    
+
 - Supports profiles: dev/stage/prod
-    
 
 ---
 
@@ -124,6 +117,7 @@ kiwi help
 ```
 
 ---
+
 ## 🧠 Project & App Lifecycle
 
 ### `kiwi upgrade`

@@ -1,0 +1,16 @@
+#startMenu {
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    background-color: blue;
+}
+
+#startMenu:hover {
+    background-color: deepskyblue;
+}
+
+[data-dock="default"], .dock {
+    height: 5vh;
+    width: 100%;
+    background-color: black;
+}

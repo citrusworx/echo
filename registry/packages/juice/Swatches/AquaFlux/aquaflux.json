@@ -1,0 +1,30 @@
+{
+    "name": "AquaFlux",
+    "nickname": "aqfx",
+    "swatches": {
+        "analogous": {
+            "light": "#23E8FA",
+            "azure": "#2360FA",
+            "seafom": "#23FAC4",
+            "deep": "#2A23FA",
+            "seaweed": "#23FA7B"
+        },
+        "monochromatic": {
+            "slate": "#4E697A",
+            "shade": "#404A50",
+            "dark": "#4096CF",
+            "slate-light": "#4E82A5",
+            "black": "#2A2F33"
+        },
+        "triad": {
+            "red": "#FA2523",
+            "yel": "#FAFA23",
+            "gol": "#A5A54E",
+            "mah": "#7A4F4E",
+            "slate": "#4E687A"
+        }
+    },
+    "classes": {
+        
+    }
+}

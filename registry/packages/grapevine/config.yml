@@ -2,12 +2,12 @@ name: 'Grapevine'
 version: 1.0.0
 
 dependencies:
-  - name: 'core'
-    version: 1.0.0
-  - name: 'services'
-    version: 1.0.0
-  - name: 'citrusCLI'
-    version: 1.0.0
+- name: 'core'
+  version: 1.0.0
+- name: 'services'
+  version: 1.0.0
+- name: 'citrusCLI'
+  version: 1.0.0
 
 engine: 'SQL' # SQL | NoSQL | Hybrid | API
 type: 'REST' # REST | SOAP | GraphQL | gRPC
@@ -18,7 +18,7 @@ orchestration: 'docker' # docker | kubernetes | helm | cloudformation | CDK
 
 # Cloud Config
 provider: 'AWS' # AWS | Azure | GCP | Docker | Linode | DigitalOcean | Packet | Scaleway | VMware
-accessKey: '<YOUR_AwsAccessKey_HERE>'
+accessKey: '<YOUR_AwsAccessKey_HERE>' # Use environment variables
 providerConfig: 'path/to/config.yml' # Path to specific provider config file
 region: 'Virginia'
 availabilityZone: 'us-east-1a'

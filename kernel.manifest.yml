@@ -16,6 +16,11 @@ kernel:
     panel_mount: ./citrusos/index.html
 
 runtimes:
+  citrusos:
+    path: ""
+    label: ""
+    auto_start: true 
+
   kiwipress:
     path: ''
     label: "Headless WP & CMS"
@@ -30,3 +35,8 @@ runtimes:
     path: ''
     label: "PoS & Inventory System"
     auto_start: false
+
+  moduleSettings:
+    nectarine:
+      database: postgres
+      config: './path'
