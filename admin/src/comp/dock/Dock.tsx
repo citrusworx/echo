@@ -37,7 +37,7 @@ function Dock() {
   return (
     <div data-dock="default" className="dock" id="dock">
       <div id="startMenu">
-        <i id="startLogo">S</i>
+        <i className="fa-solid fa-lemon" id=""></i>
       </div>
     </div>
   );

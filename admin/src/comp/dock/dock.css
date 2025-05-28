@@ -5,6 +5,17 @@
     background-color: rgba(110, 200, 20, 50%);
 }
 
+#startMenu i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    color: white;
+    font-size: 2rem;
+}
+
 #startMenu:hover {
     background-color: deepskyblue;
     cursor: pointer;

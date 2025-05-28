@@ -1,25 +1,50 @@
+:root {
+    --icon-color: rgb(50, 100, 100);
+}
+
 [data-top-dock="default"], .dock-top {
+    position: fixed;
+    top: 0;
+    left: 3%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
-    min-height: 3vh;
+    width: 90vw;
+    margin: 0 auto;
+    min-height: 4vh;
     background-color: rgb(100, 200, 50);
+    box-shadow: 1px 2px 2px rgba(255, 255, 255, 50%);
 }
 
 #settings {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1vw;
-    height: 100%;
+    width: 1.75rem;
+    height: 3vh;
     margin-left: 2.5rem;
     border-radius: 10px;
-    background-color: white;
 }
 
-#settings:hover {
-    background-color: black;
+#adminApps i  {
+    font-size: 2rem;
+    color: var(--icon-color);
+    padding-left: 2rem;
+}
+
+#settings i  {
+    font-size: 2rem;
+    padding-right: 2rem;
+    color: var(--icon-color);
+}
+
+
+#adminApps i:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#settings i:hover {
     color: white;
     cursor: pointer;
 }
