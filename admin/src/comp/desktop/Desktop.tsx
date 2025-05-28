@@ -1,5 +1,6 @@
 import {useEffect} from 'react'
 import './desktop.css'
+import Blog from '../../applet/blog/Blog';
 
 function Desktop() {
   useEffect(() => {
@@ -46,7 +47,7 @@ function Desktop() {
 
   return (
     <div data-desktop="view" className="rastalime" id="desktop">
-        
+        <Blog />
     </div>
   )
 }

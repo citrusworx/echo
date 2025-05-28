@@ -1,0 +1,46 @@
+#blogApplet {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 30vw;
+    height: 40vh;
+    background-color: white;
+    z-index: 2;
+}
+
+#blogAppletView {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+#AppletBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    height: 3vh;
+    width: 100%;
+    background-color: gray;
+}
+
+#closeButton {
+    height: 2vh;
+    width: 1vw;
+    border-radius: 10px;
+    background-color: red;
+}
+
+#maximizeButton {
+    height: 2vh;
+    width: 1vw;
+    border-radius: 10px;
+    background-color: green;
+}
+
+#minimizeButton {
+    height: 2vh;
+    width: 1vw;
+    border-radius: 10px;
+    background-color: yellow;
+}
