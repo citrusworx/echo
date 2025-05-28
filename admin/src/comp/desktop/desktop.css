@@ -1,5 +1,29 @@
-.desktop--view {
-    height: 90vh;
+[data-desktop="view"] {
+    height: 97vh;
     width: 100%;
-    background-color: aqua;
+    z-index: 0;
+}
+
+.classic {
+    background-image: url("../../img/cascading-lime.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+}
+
+.limesoup {
+    background-image: url("../../img/lime-soup.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+}
+
+.limewater {
+    background-image: url("../../img/lime-water.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
 }

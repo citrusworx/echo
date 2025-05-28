@@ -11,11 +11,11 @@ function Dock() {
       const p = document.createElement('p');
 
       div.style.backgroundColor = 'white';
-      div.style.height = '10vh';
-      div.style.width = '4vw';
+      div.style.height = '20vh';
+      div.style.width = '10vw';
       div.style.position = 'absolute';
       div.style.bottom = '5vh';
-      div.style.left = '5vw';
+      div.style.left = '0vw';
 
       p.textContent = 'Context Menu';
       p.style.cursor = 'pointer';
@@ -37,7 +37,7 @@ function Dock() {
   return (
     <div data-dock="default" className="dock" id="dock">
       <div id="startMenu">
-        S
+        <i id="startLogo">S</i>
       </div>
     </div>
   );

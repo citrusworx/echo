@@ -3,8 +3,8 @@ import './desktop.css'
 
 function Desktop() {
   return (
-    <div data-desktop="view" className="desktop--view">
-        Desktop
+    <div data-desktop="view" className="limewater">
+        
     </div>
   )
 }

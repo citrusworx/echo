@@ -1,0 +1,12 @@
+{
+    "name": "Blog",
+    "type": "WP",
+    "icon": {
+        "src": "",
+        "alt": {
+            "dark": "",
+            "outlined": ""
+        }
+    },
+    "showOnDesktop": true
+}
