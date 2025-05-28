@@ -27,3 +27,11 @@
     min-height: 100%;
     width: 100%;
 }
+
+.rastalime {
+    background-image: url("../../img/rasta-lime.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+}

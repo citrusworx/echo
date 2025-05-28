@@ -1,0 +1,7 @@
+{ 
+    "name": "Pages",
+    "description": "An applet to manage pages on your website",
+    "source": {
+        "db": "postgres"
+    }
+}
